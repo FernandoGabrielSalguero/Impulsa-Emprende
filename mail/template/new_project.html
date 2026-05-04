@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{title}}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 24px;
+            background: #f6f8fc;
+            font-family: Arial, sans-serif;
+            color: #0f172a;
+        }
+
+        .card {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .head {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 20px 24px;
+        }
+
+        .head h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .content {
+            padding: 22px 24px 8px;
+        }
+
+        .summary {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 16px;
+            font-size: 14px;
+        }
+
+        .summary td {
+            border-top: 1px solid #edf2f7;
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+
+        .summary td.label {
+            width: 240px;
+            color: #334155;
+            font-weight: bold;
+        }
+
+        .list {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .notice {
+            margin-top: 10px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e3a8a;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .footer {
+            padding: 10px 24px 22px;
+            color: #64748b;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="head">
+            <h1>Solicitud nuevo proyecto</h1>
+        </div>
+
+        <div class="content">
+            <p>Hola <strong>{{nombre}}</strong>, recibimos tu solicitud y este es el resumen:</p>
+
+            <table class="summary" role="presentation">
+                <tr><td class="label">Nombre</td><td>{{nombre}}</td></tr>
+                <tr><td class="label">Nombre del proyecto</td><td>{{nombre_proyecto}}</td></tr>
+                <tr><td class="label">Correo</td><td>{{correo}}</td></tr>
+                <tr><td class="label">WhatsApp</td><td>{{whatsapp}}</td></tr>
+                <tr><td class="label">1. Que queres desarrollar</td><td>{{q1_descripcion}}</td></tr>
+                <tr><td class="label">2. Problema a resolver</td><td>{{q2_problema}}</td></tr>
+                <tr><td class="label">3. Usuarios de la app</td><td>{{q3_usuarios}}</td></tr>
+                <tr><td class="label">4. Resultado ideal (6 meses)</td><td>{{q4_resultado_ideal}}</td></tr>
+                <tr><td class="label">5. Tipo de desarrollo</td><td>{{q5_tipo_aplicacion}}</td></tr>
+                <tr><td class="label">6. Registro e inicio de sesion</td><td>{{q6_login}}</td></tr>
+                <tr><td class="label">7. Acceso</td><td>{{q7_acceso}}</td></tr>
+                <tr><td class="label">8. Funciones minimas</td><td>{{q8_funciones_minimas}}</td></tr>
+                <tr><td class="label">9. Funcionalidades</td><td><ul class="list">{{q9_funcionalidades}}</ul></td></tr>
+                <tr><td class="label">10. Permisos admin vs usuario</td><td>{{q10_admin_vs_usuario}}</td></tr>
+                <tr><td class="label">11. Integraciones</td><td>{{q11_integraciones}}</td></tr>
+                <tr><td class="label">12. Contenido y procesos</td><td>{{q12_contenido}}</td></tr>
+                <tr><td class="label">13. Referencias</td><td>{{q13_referencias}}</td></tr>
+                <tr><td class="label">14. Identidad visual</td><td>{{q14_diseno}}</td></tr>
+                <tr><td class="label">15. Urgencia</td><td>{{q15_urgencia}}</td></tr>
+                <tr><td class="label">16. Presupuesto</td><td>{{q16_presupuesto}}</td></tr>
+                <tr><td class="label">17. Modalidad</td><td>{{q17_modalidad}}</td></tr>
+                <tr><td class="label">18. Informacion adicional</td><td>{{q18_adicional}}</td></tr>
+            </table>
+
+            <div class="notice">
+                En las proximas 72 horas habiles nos vamos a comunicar por correo o por WhatsApp para coordinar una reunion donde vamos a ver alcance, metodologia de trabajo e inversion en el proyecto.
+            </div>
+        </div>
+
+        <div class="footer">
+            Impulsa Group
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Dominios permitidos para llamar a esta API desde el navegador.
+
+https://norumestudio.com.ar
+https://www.norumestudio.com.ar

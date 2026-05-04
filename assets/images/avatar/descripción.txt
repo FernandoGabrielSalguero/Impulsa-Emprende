@@ -1,0 +1,1 @@
+aca debemos almacenar el avatar de los usuarios
