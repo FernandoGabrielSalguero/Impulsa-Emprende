@@ -1,4 +1,4 @@
-<section class="marketing-card status-card">
+<section class="marketing-card status-card im-tarjeta">
     <span class="material-icons status-icon">pending_actions</span>
     <div>
         <h2>Solicitud en proceso</h2>

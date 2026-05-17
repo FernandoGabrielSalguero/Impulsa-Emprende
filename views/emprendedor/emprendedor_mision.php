@@ -25,11 +25,7 @@ $misionCompletada = !empty($mision['completado']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Tu misión</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar {
@@ -400,13 +396,13 @@ $misionCompletada = !empty($mision['completado']);
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='emprendedor_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -439,16 +435,16 @@ $misionCompletada = !empty($mision['completado']);
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Tu misión</div>
@@ -456,7 +452,7 @@ $misionCompletada = !empty($mision['completado']);
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
+            <section class="content im-contenido">
                 <div class="step-card">
                     <div class="step-hero">
                         <span class="step-badge">Paso 1</span>
@@ -469,15 +465,15 @@ $misionCompletada = !empty($mision['completado']);
                     </div>
 
                     <div class="step-grid">
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Para qué sirve?</h3>
                             <p>Te ayuda a explicar con claridad qué problema resolvés y por qué tu propuesta importa. Es la base para comunicar mejor tu negocio.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué vamos a trabajar?</h3>
                             <p>Qué hacés, a quién ayudás y cuál es el valor diferencial de tu emprendimiento. Todo eso se transforma en una frase simple y clara.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué preguntas tengo que hacerme?</h3>
                             <ul>
                                 <li>¿A quien ayudo exactamente?</li>
@@ -539,9 +535,9 @@ $misionCompletada = !empty($mision['completado']);
 
                     <div class="step-actions-card">
                         <div class="step-actions">
-                            <button class="btn btn-info" type="button" id="save-mision-draft">Guardar misión</button>
-                            <button class="btn btn-cancelar" type="button" onclick="history.back()">Ir atrás</button>
-                            <button class="btn btn-cancelar" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
+                            <button class="btn btn-info im-boton--principal im-boton" type="button" id="save-mision-draft">Guardar misión</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="history.back()">Ir atrás</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
                         </div>
                     </div>
                 </div>
@@ -572,8 +568,8 @@ Podés reemplazar este contenido cuando quieras.</p>
             <h3 id="mision-flow-title">Misión guardada</h3>
             <p>Ya completaste el paso 1. Seguimos con tu visión para definir hacia dónde querés llevar tu emprendimiento.</p>
             <div class="flow-modal-actions">
-                <button class="btn btn-info" type="button" id="mision-flow-next">Ir al paso 2: Visión</button>
-                <button class="btn btn-cancelar" type="button" id="mision-flow-close">Quedarme acá</button>
+                <button class="btn btn-info im-boton--principal im-boton" type="button" id="mision-flow-next">Ir al paso 2: Visión</button>
+                <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" id="mision-flow-close">Quedarme acá</button>
             </div>
         </div>
     </div>

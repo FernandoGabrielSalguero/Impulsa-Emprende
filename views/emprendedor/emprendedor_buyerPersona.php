@@ -33,11 +33,7 @@ $questions = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Tu buyer persona</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -380,13 +376,13 @@ $questions = [
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='emprendedor_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -419,16 +415,16 @@ $questions = [
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Tu buyer persona</div>
@@ -436,7 +432,7 @@ $questions = [
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
+            <section class="content im-contenido">
                 <div class="step-card">
                     <div class="step-hero">
                         <span class="step-badge">Paso 3</span>
@@ -449,15 +445,15 @@ $questions = [
                     </div>
 
                     <div class="step-grid">
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Para qué sirve?</h3>
                             <p>Te permite comunicar mejor tu propuesta, crear contenido más útil y diseñar una oferta alineada con necesidades concretas.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué vamos a trabajar?</h3>
                             <p>Perfil, hábitos, motivaciones, dolores, criterios de decisión y objeciones de tu cliente ideal para tomar decisiones con más criterio.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué preguntas tengo que hacerme?</h3>
                             <ul class="questions-panel-list" id="buyer-questions-list">
                                 <?php foreach ($questions as $question): ?>
@@ -508,9 +504,9 @@ $questions = [
 
                     <div class="step-actions-card">
                         <div class="step-actions">
-                            <button class="btn btn-info" type="button" id="save-buyer">Guardar buyer persona</button>
-                            <button class="btn btn-cancelar" type="button" onclick="history.back()">Ir atrás</button>
-                            <button class="btn btn-cancelar" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
+                            <button class="btn btn-info im-boton--principal im-boton" type="button" id="save-buyer">Guardar buyer persona</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="history.back()">Ir atrás</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
                         </div>
                     </div>
                 </div>
@@ -539,8 +535,8 @@ $questions = [
             <h3 id="buyer-flow-title">Buyer persona guardado</h3>
             <p>Ya completaste el paso 3. El siguiente paso es solicitar tu landing page con toda la información clave del emprendimiento.</p>
             <div class="flow-modal-actions">
-                <button class="btn btn-info" type="button" id="buyer-flow-next">Ir al paso 4: Landing Page</button>
-                <button class="btn btn-cancelar" type="button" id="buyer-flow-close">Quedarme acá</button>
+                <button class="btn btn-info im-boton--principal im-boton" type="button" id="buyer-flow-next">Ir al paso 4: Landing Page</button>
+                <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" id="buyer-flow-close">Quedarme acá</button>
             </div>
         </div>
     </div>

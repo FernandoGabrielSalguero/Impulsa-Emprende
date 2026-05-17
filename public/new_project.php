@@ -12,10 +12,7 @@
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="Impulsa | Formulario de Nuevo Proyecto">
     <meta property="twitter:description" content="Completa el formulario y en hasta 72 hs habiles te contactamos para planificar una reunion.">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/framework/framework.css">
-    <script src="../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '..'; $impulsaMaterialUseValidaciones = true; require __DIR__ . '/../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .project-public-wrap {
@@ -211,61 +208,61 @@
             </p>
         </section>
 
-        <form id="new-project-form" class="form-modern" method="post" action="new_project_controller.php">
-            <section class="project-card">
+        <form id="new-project-form" class="form-modern im-formulario" method="post" action="new_project_controller.php">
+            <section class="project-card im-tarjeta">
                 <h2>Datos iniciales</h2>
-                <div class="project-grid">
-                    <div class="project-field">
+                <div class="project-grid im-grilla">
+                    <div class="project-field im-campo">
                         <label for="nombre">Nombre <span class="project-required">*</span></label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" required data-im-campo="nombre">
                     </div>
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="nombre_proyecto">Nombre del proyecto <span class="project-required">*</span></label>
-                        <input type="text" id="nombre_proyecto" name="nombre_proyecto" required>
+                        <input type="text" id="nombre_proyecto" name="nombre_proyecto" required data-im-campo="generico">
                     </div>
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="correo">Correo <span class="project-required">*</span></label>
-                        <input type="email" id="correo" name="correo" required>
+                        <input type="email" id="correo" name="correo" required data-im-campo="email">
                     </div>
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="whatsapp">Whatsapp <span class="project-required">*</span></label>
-                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+54911XXXXXXXX">
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+54911XXXXXXXX" data-im-campo="whatsapp">
                     </div>
                 </div>
             </section>
 
-            <section class="project-card">
+            <section class="project-card im-tarjeta">
                 <h2>1. Sobre el proyecto</h2>
-                <div class="project-grid">
-                    <div class="project-field full">
+                <div class="project-grid im-grilla">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q1_descripcion">1. Contanos brevemente que queres desarrollar <span class="project-required">*</span></label>
                         <div class="project-help">Ejemplo: una app para turnos, una plataforma para vender cursos, un sistema interno.</div>
-                        <textarea id="q1_descripcion" name="q1_descripcion" required></textarea>
+                        <textarea id="q1_descripcion" name="q1_descripcion" required data-im-campo="textarea"></textarea>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q2_problema">2. Que problema queres resolver con esta aplicacion <span class="project-required">*</span></label>
                         <div class="project-help">Ejemplo: ordenar procesos, vender mas, ahorrar tiempo, mejorar atencion al cliente.</div>
-                        <textarea id="q2_problema" name="q2_problema" required></textarea>
+                        <textarea id="q2_problema" name="q2_problema" required data-im-campo="textarea"></textarea>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q3_usuarios">3. Quienes van a usar la aplicacion <span class="project-required">*</span></label>
                         <div class="project-help">Ejemplo: clientes, equipo interno, vendedores, proveedores, administradores.</div>
-                        <textarea id="q3_usuarios" name="q3_usuarios" required></textarea>
+                        <textarea id="q3_usuarios" name="q3_usuarios" required data-im-campo="textarea"></textarea>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q4_resultado_ideal">4. Cual seria el resultado ideal para vos dentro de 6 meses <span class="project-required">*</span></label>
-                        <textarea id="q4_resultado_ideal" name="q4_resultado_ideal" required></textarea>
+                        <textarea id="q4_resultado_ideal" name="q4_resultado_ideal" required data-im-campo="textarea"></textarea>
                     </div>
                 </div>
             </section>
 
-            <section class="project-card">
+            <section class="project-card im-tarjeta">
                 <h2>2. Sobre el tipo de aplicacion</h2>
-                <div class="project-grid">
-                    <div class="project-field full">
+                <div class="project-grid im-grilla">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <div class="project-legend">5. Que queres desarrollar <span class="project-required">*</span></div>
                         <div class="project-options">
                             <label class="project-option"><input type="radio" name="q5_tipo_aplicacion" value="pagina_web" required>Pagina web</label>
@@ -276,7 +273,7 @@
                         </div>
                     </div>
 
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <div class="project-legend">6. La aplicacion necesita registro e inicio de sesion <span class="project-required">*</span></div>
                         <div class="project-options">
                             <label class="project-option"><input type="radio" name="q6_login" value="si" required>Si</label>
@@ -285,7 +282,7 @@
                         </div>
                     </div>
 
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <div class="project-legend">7. Quienes tendrian acceso <span class="project-required">*</span></div>
                         <div class="project-options">
                             <label class="project-option"><input type="radio" name="q7_acceso" value="solo_equipo" required>Solo mi equipo</label>
@@ -298,16 +295,16 @@
                 </div>
             </section>
 
-            <section class="project-card">
+            <section class="project-card im-tarjeta">
                 <h2>3. Sobre funcionalidades</h2>
-                <div class="project-grid">
-                    <div class="project-field full">
+                <div class="project-grid im-grilla">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q8_funciones_minimas">8. Que cosas si o si tiene que permitir la primera version <span class="project-required">*</span></label>
                         <div class="project-help">Pensa en las funciones minimas para que el proyecto tenga sentido.</div>
-                        <textarea id="q8_funciones_minimas" name="q8_funciones_minimas" required></textarea>
+                        <textarea id="q8_funciones_minimas" name="q8_funciones_minimas" required data-im-campo="textarea"></textarea>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <div class="project-legend">9. Marca las funciones que crees que vas a necesitar</div>
                         <div class="project-options">
                             <label class="project-option"><input type="checkbox" name="q9_funcionalidades[]" value="registro_login">Registro e inicio de sesion</label>
@@ -327,25 +324,25 @@
                         </div>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q10_admin_vs_usuario">10. Hay algo que queres que puedan hacer los administradores y no los usuarios comunes <span class="project-required">*</span></label>
-                        <textarea id="q10_admin_vs_usuario" name="q10_admin_vs_usuario" required></textarea>
+                        <textarea id="q10_admin_vs_usuario" name="q10_admin_vs_usuario" required data-im-campo="textarea"></textarea>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q11_integraciones">11. La app necesita conectarse con alguna herramienta que ya usas <span class="project-required">*</span></label>
                         <div class="project-help">Ejemplo: Whatsapp, Mercado Pago, Stripe, Google Calendar, Excel, CRM, ERP.</div>
-                        <textarea id="q11_integraciones" name="q11_integraciones" required></textarea>
+                        <textarea id="q11_integraciones" name="q11_integraciones" required data-im-campo="textarea"></textarea>
                     </div>
                 </div>
             </section>
 
-            <section class="project-card">
+            <section class="project-card im-tarjeta">
                 <h2>4. Sobre operacion y contenido</h2>
-                <div class="project-grid">
-                    <div class="project-field">
+                <div class="project-grid im-grilla">
+                    <div class="project-field im-campo">
                         <label for="q12_contenido">12. Ya tenes definido el contenido, informacion o procesos de la app <span class="project-required">*</span></label>
-                        <select id="q12_contenido" name="q12_contenido" required>
+                        <select id="q12_contenido" name="q12_contenido" required data-im-campo="generico">
                             <option value="">Seleccionar</option>
                             <option value="claro">Si, bastante claro</option>
                             <option value="medio">Mas o menos</option>
@@ -353,9 +350,9 @@
                         </select>
                     </div>
 
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="q14_diseno">14. Ya contas con logo, identidad visual o diseno <span class="project-required">*</span></label>
-                        <select id="q14_diseno" name="q14_diseno" required>
+                        <select id="q14_diseno" name="q14_diseno" required data-im-campo="generico">
                             <option value="">Seleccionar</option>
                             <option value="completa">Si, ya tengo todo</option>
                             <option value="parcial">Tengo algo, pero falta</option>
@@ -363,20 +360,20 @@
                         </select>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q13_referencias">13. Tenes referencias de apps o sistemas parecidos <span class="project-required">*</span></label>
                         <div class="project-help">Podes compartir nombres o links.</div>
-                        <textarea id="q13_referencias" name="q13_referencias" required></textarea>
+                        <textarea id="q13_referencias" name="q13_referencias" required data-im-campo="textarea"></textarea>
                     </div>
                 </div>
             </section>
 
-            <section class="project-card">
+            <section class="project-card im-tarjeta">
                 <h2>5. Sobre prioridad y decision</h2>
-                <div class="project-grid">
-                    <div class="project-field">
+                <div class="project-grid im-grilla">
+                    <div class="project-field im-campo">
                         <label for="q15_urgencia">15. Que tan urgente es este proyecto <span class="project-required">*</span></label>
-                        <select id="q15_urgencia" name="q15_urgencia" required>
+                        <select id="q15_urgencia" name="q15_urgencia" required data-im-campo="generico">
                             <option value="">Seleccionar</option>
                             <option value="cuanto_antes">Lo quiero empezar cuanto antes</option>
                             <option value="1_2_meses">En 1 a 2 meses</option>
@@ -385,9 +382,9 @@
                         </select>
                     </div>
 
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="q16_presupuesto">16. Tenes una idea de presupuesto para este proyecto <span class="project-required">*</span></label>
-                        <select id="q16_presupuesto" name="q16_presupuesto" required>
+                        <select id="q16_presupuesto" name="q16_presupuesto" required data-im-campo="generico">
                             <option value="">Seleccionar</option>
                             <option value="sin_definir">Todavia no</option>
                             <option value="menos_1000000">Menos de $1.000.000</option>
@@ -396,9 +393,9 @@
                         </select>
                     </div>
 
-                    <div class="project-field">
+                    <div class="project-field im-campo">
                         <label for="q17_modalidad">17. Preferis avanzar por etapas o resolver todo en una sola propuesta <span class="project-required">*</span></label>
-                        <select id="q17_modalidad" name="q17_modalidad" required>
+                        <select id="q17_modalidad" name="q17_modalidad" required data-im-campo="generico">
                             <option value="">Seleccionar</option>
                             <option value="por_etapas">Por etapas</option>
                             <option value="todo_junto">Todo junto</option>
@@ -406,14 +403,14 @@
                         </select>
                     </div>
 
-                    <div class="project-field full">
+                    <div class="project-field full im-campo im-campo--ancho">
                         <label for="q18_adicional">18. Hay algo importante que no te preguntamos y deberiamos saber antes de armar una propuesta <span class="project-required">*</span></label>
-                        <textarea id="q18_adicional" name="q18_adicional" required></textarea>
+                        <textarea id="q18_adicional" name="q18_adicional" required data-im-campo="textarea"></textarea>
                     </div>
                 </div>
 
                 <div class="project-actions">
-                    <button class="btn btn-aceptar" type="submit">Enviar formulario</button>
+                    <button class="btn btn-aceptar im-boton im-boton--principal" type="submit">Enviar formulario</button>
                 </div>
             </section>
         </form>
@@ -424,8 +421,8 @@
             <h3 id="confirm-modal-title">Confirmar envio</h3>
             <p>Vamos a enviar tu formulario con la informacion cargada. Queres continuar?</p>
             <div class="confirm-modal-actions">
-                <button type="button" class="btn btn-cancelar" id="confirmCancelBtn">Cancelar</button>
-                <button type="button" class="btn btn-aceptar" id="confirmAcceptBtn">Aceptar</button>
+                <button type="button" class="btn btn-cancelar im-boton--tonal im-boton" id="confirmCancelBtn">Cancelar</button>
+                <button type="button" class="btn btn-aceptar im-boton im-boton--principal" id="confirmAcceptBtn">Aceptar</button>
             </div>
         </div>
     </div>

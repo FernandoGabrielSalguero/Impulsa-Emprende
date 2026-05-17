@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 require_once __DIR__ . '/../../controllers/emprendedor_landing_page_requestController.php';
 
 $val = function(string $key, string $fallback = '') use ($request): string {
@@ -33,11 +33,7 @@ $landingCompleta = !empty($request['completado']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Solicitud Landing Page</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -80,7 +76,7 @@ $landingCompleta = !empty($request['completado']);
             .lp-col-full  { grid-column: 1; }
         }
 
-        /* SecciÃ³n label */
+        /* Sección label */
         .lp-section-label {
             font-size: 11px;
             font-weight: 700;
@@ -225,10 +221,10 @@ $landingCompleta = !empty($request['completado']);
             color: #4338ca;
         }
 
-        /* Bloque direcciÃ³n */
+        /* Bloque dirección */
         .lp-address-block { margin-top: 4px; }
 
-        /* Divider entre col 3 y bloque direcciÃ³n */
+        /* Divider entre col 3 y bloque dirección */
         .lp-dir-divider {
             font-size: 11px;
             font-weight: 700;
@@ -314,15 +310,15 @@ $landingCompleta = !empty($request['completado']);
 </head>
 
 <body>
-<div class="layout">
+<div class="layout im-aplicacion">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar im-menu-lateral" id="sidebar">
         <div class="sidebar-header">
             <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
             <span class="logo-text">impulsa emprende</span>
         </div>
-        <nav class="sidebar-menu">
+        <nav class="sidebar-menu im-navegacion">
             <ul>
                 <li onclick="location.href='emprendedor_dashboard.php'">
                     <span class="material-icons" style="color:#6366f1">home</span>
@@ -330,11 +326,11 @@ $landingCompleta = !empty($request['completado']);
                 </li>
                 <li onclick="location.href='emprendedor_mision.php'">
                     <span class="material-icons" style="color:#6366f1">track_changes</span>
-                    <span class="link-text">MisiÃ³n</span>
+                    <span class="link-text">Misión</span>
                 </li>
                 <li onclick="location.href='emprendedor_vision.php'">
                     <span class="material-icons" style="color:#6366f1">lightbulb</span>
-                    <span class="link-text">VisiÃ³n</span>
+                    <span class="link-text">Visión</span>
                 </li>
                 <li onclick="location.href='emprendedor_buyerPersona.php'">
                     <span class="material-icons" style="color:#6366f1">groups</span>
@@ -355,19 +351,19 @@ $landingCompleta = !empty($request['completado']);
             </ul>
         </nav>
         <div class="sidebar-footer">
-            <button class="btn-icon" onclick="toggleSidebar()">
+            <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                 <span class="material-icons" id="collapseIcon">chevron_left</span>
             </button>
         </div>
     </aside>
 
     <!-- MAIN -->
-    <div class="main">
+    <div class="main im-contenedor">
 
         <!-- NAVBAR -->
-        <header class="navbar">
+        <header class="navbar im-barra-superior">
             <div class="navbar-left">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons">menu</span>
                 </button>
                 <div class="navbar-title">Solicitud Landing Page</div>
@@ -376,16 +372,16 @@ $landingCompleta = !empty($request['completado']);
         </header>
 
         <!-- CONTENIDO -->
-        <section class="content">
+        <section class="content im-contenido">
             <div class="lp-form-card">
 
                 <h2 style="margin:0 0 4px;font-size:18px">
-                    <?= $esEdicion ? 'EditÃ¡ tu solicitud' : 'CompletÃ¡ tu solicitud' ?>
+                    <?= $esEdicion ? 'Editá tu solicitud' : 'Completá tu solicitud' ?>
                 </h2>
                 <p style="margin:0 0 24px;font-size:14px;color:#6b7280">
                     <?= $esEdicion
-                        ? 'Tus datos estÃ¡n guardados. PodÃ©s actualizarlos cuando quieras.'
-                        : 'CompletÃ¡ la informaciÃ³n sobre tu emprendimiento para solicitar tu landing page.' ?>
+                        ? 'Tus datos están guardados. Podés actualizarlos cuando quieras.'
+                        : 'Completá la información sobre tu emprendimiento para solicitar tu landing page.' ?>
                 </p>
 
                 <div class="lp-feedback" id="lp-feedback"></div>
@@ -401,7 +397,7 @@ $landingCompleta = !empty($request['completado']);
                             <label for="lp-nombre-emp">Nombre del emprendimiento</label>
                             <input id="lp-nombre-emp" type="text" name="nombre_emprendimiento"
                                 value="<?= $val('nombre_emprendimiento') ?>"
-                                placeholder="Ej: CafÃ© del Sur">
+                                placeholder="Ej: Café del Sur">
                         </div>
 
                         <div class="lp-field">
@@ -426,7 +422,7 @@ $landingCompleta = !empty($request['completado']);
                         </div>
 
                         <div class="lp-field">
-                            <label for="lp-telefono">TelÃ©fono</label>
+                            <label for="lp-telefono">Teléfono</label>
                             <input id="lp-telefono" type="tel" name="telefono_contacto"
                                 value="<?= $val('telefono_contacto', $request['perfil_whatsapp'] ?? '') ?>"
                                 autocomplete="tel"
@@ -434,9 +430,9 @@ $landingCompleta = !empty($request['completado']);
                         </div>
                     </div>
 
-                    <!--  COL 2: Oferta + SituaciÃ³n + Infraestructura  -->
+                    <!--  COL 2: Oferta + Situación + Infraestructura  -->
                     <div>
-                        <p class="lp-section-label">Â¿QuÃ© ofrecÃ©s?</p>
+                        <p class="lp-section-label">¿Qué ofrecés?</p>
 
                         <div class="lp-field">
                             <div class="lp-check-row">
@@ -456,24 +452,24 @@ $landingCompleta = !empty($request['completado']);
                         </div>
 
                         <div class="lp-field">
-                            <label for="lp-categoria">CategorÃ­a</label>
+                            <label for="lp-categoria">Categoría</label>
                             <select id="lp-categoria" name="rubro_categoria_id">
-                                <option value="">SeleccionÃ¡ una categorÃ­a</option>
+                                <option value="">Seleccioná una categoría</option>
                             </select>
                         </div>
 
                         <div class="lp-field">
-                            <label for="lp-subcategoria">SubcategorÃ­a</label>
+                            <label for="lp-subcategoria">Subcategoría</label>
                             <select id="lp-subcategoria" name="rubro_subcategoria_id" disabled>
-                                <option value="">SeleccionÃ¡ una categorÃ­a primero</option>
+                                <option value="">Seleccioná una categoría primero</option>
                             </select>
                         </div>
 
-                        <p class="lp-section-label" style="margin-top:18px">SituaciÃ³n actual</p>
+                        <p class="lp-section-label" style="margin-top:18px">Situación actual</p>
 
                         <div class="lp-field">
                             <label class="lp-toggle">
-                                <span class="lp-toggle-text">Â¿Ya facturÃ¡s?</span>
+                                <span class="lp-toggle-text">¿Ya facturás?</span>
                                 <span class="toggle-switch">
                                     <input type="checkbox" name="ya_factura" value="1"
                                         <?= $yaFactura ? 'checked' : '' ?>>
@@ -486,7 +482,7 @@ $landingCompleta = !empty($request['completado']);
 
                         <div class="lp-field">
                             <label class="lp-toggle">
-                                <span class="lp-toggle-text">Â¿TenÃ©s dominio registrado?</span>
+                                <span class="lp-toggle-text">¿Tenés dominio registrado?</span>
                                 <span class="toggle-switch">
                                     <input type="checkbox" name="dominio_registrado" value="1"
                                         <?= $dominioReg ? 'checked' : '' ?>>
@@ -497,7 +493,7 @@ $landingCompleta = !empty($request['completado']);
 
                         <div class="lp-field">
                             <label class="lp-toggle">
-                                <span class="lp-toggle-text">Â¿TenÃ©s hosting propio?</span>
+                                <span class="lp-toggle-text">¿Tenés hosting propio?</span>
                                 <span class="toggle-switch">
                                     <input type="checkbox" name="hosting_propio" value="1"
                                         <?= $hostingPropio ? 'checked' : '' ?>>
@@ -507,13 +503,13 @@ $landingCompleta = !empty($request['completado']);
                         </div>
                     </div>
 
-                    <!-- COL 3: Espacio fÃ­sico + DirecciÃ³n -->
+                    <!-- COL 3: Espacio físico + Dirección -->
                     <div>
-                        <p class="lp-section-label">Espacio fÃ­sico</p>
+                        <p class="lp-section-label">Espacio físico</p>
 
                         <div class="lp-field">
                             <label class="lp-toggle">
-                                <span class="lp-toggle-text">Â¿TenÃ©s local o espacio fÃ­sico?</span>
+                                <span class="lp-toggle-text">¿Tenés local o espacio físico?</span>
                                 <span class="toggle-switch">
                                     <input type="checkbox" id="toggle-espacio" name="espacio_fisico" value="1"
                                         <?= $espFisico ? 'checked' : '' ?>>
@@ -522,18 +518,18 @@ $landingCompleta = !empty($request['completado']);
                             </label>
                         </div>
 
-                        <!-- DirecciÃ³n: visible solo si espacio_fisico = 1 -->
+                        <!-- Dirección: visible solo si espacio_fisico = 1 -->
                         <div class="lp-address-block" id="lp-address-block"
                              style="<?= $espFisico ? '' : 'display:none' ?>">
 
-                            <p class="lp-dir-divider">DirecciÃ³n del local</p>
+                            <p class="lp-dir-divider">Dirección del local</p>
 
-                            <!-- PaÃ­s -->
+                            <!-- País -->
                             <div class="lp-field">
-                                <label for="lp-pais">PaÃ­s</label>
+                                <label for="lp-pais">País</label>
                                 <div class="select-loading" id="wrap-pais">
                                     <select id="lp-pais" name="pais" disabled>
-                                        <option value="">Cargando paÃ­ses...</option>
+                                        <option value="">Cargando países...</option>
                                     </select>
                                 </div>
                             </div>
@@ -543,7 +539,7 @@ $landingCompleta = !empty($request['completado']);
                                 <label for="lp-provincia">Provincia / Estado</label>
                                 <div id="wrap-provincia">
                                     <select id="lp-provincia" name="provincia" disabled>
-                                        <option value="">SeleccionÃ¡ un paÃ­s primero</option>
+                                        <option value="">Seleccioná un país primero</option>
                                     </select>
                                 </div>
                             </div>
@@ -553,12 +549,12 @@ $landingCompleta = !empty($request['completado']);
                                 <label for="lp-localidad">Localidad / Ciudad</label>
                                 <div id="wrap-localidad">
                                     <select id="lp-localidad" name="localidad" disabled>
-                                        <option value="">SeleccionÃ¡ una provincia primero</option>
+                                        <option value="">Seleccioná una provincia primero</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <!-- Calle y NÃºmero -->
+                            <!-- Calle y Número -->
                             <div class="lp-grid-2">
                                 <div class="lp-field">
                                     <label for="lp-calle">Calle</label>
@@ -567,7 +563,7 @@ $landingCompleta = !empty($request['completado']);
                                         placeholder="Ej: Av. Corrientes">
                                 </div>
                                 <div class="lp-field">
-                                    <label for="lp-numero">NÃºmero</label>
+                                    <label for="lp-numero">Número</label>
                                     <input id="lp-numero" type="text" name="numero"
                                         value="<?= $val('numero') ?>"
                                         placeholder="Ej: 1234">
@@ -576,23 +572,23 @@ $landingCompleta = !empty($request['completado']);
 
                             <p class="lp-hint">
                                 <span class="material-icons" style="font-size:13px">public</span>
-                                Datos geogrÃ¡ficos provistos por RestCountries y CountriesNow
+                                Datos geográficos provistos por RestCountries y CountriesNow
                             </p>
                         </div>
                     </div>
 
-                    <!--  FILA COMPLETA: DescripciÃ³n  -->
+                    <!--  FILA COMPLETA: Descripción  -->
                     <div class="lp-col-full" style="margin-top:20px">
-                        <p class="lp-section-label">DescripciÃ³n del emprendimiento</p>
+                        <p class="lp-section-label">Descripción del emprendimiento</p>
                         <div class="lp-field" style="margin-bottom:0">
                             <textarea id="lp-desc" name="descripcion"
-                                placeholder="Contanos de quÃ© trata tu emprendimiento, a quiÃ©n va dirigido, cuÃ¡l es su propuesta de valor..."><?= $val('descripcion') ?></textarea>
+                                placeholder="Contanos de qué trata tu emprendimiento, a quién va dirigido, cuál es su propuesta de valor..."><?= $val('descripcion') ?></textarea>
                         </div>
                     </div>
 
-                    <!-- FILA COMPLETA: BotÃ³n -->
+                    <!-- FILA COMPLETA: Botón -->
                     <div class="lp-col-full">
-                        <button class="btn btn-aceptar" type="submit" id="btn-guardar-lp"
+                        <button class="btn btn-aceptar im-boton im-boton--principal" type="submit" id="btn-guardar-lp"
                             style="width:100%;margin-top:20px">
                             <?= $esEdicion ? 'Actualizar solicitud' : 'Enviar solicitud' ?>
                         </button>
@@ -611,16 +607,16 @@ $landingCompleta = !empty($request['completado']);
 <div class="flow-modal-backdrop" id="landing-flow-modal" aria-hidden="true">
     <div class="flow-modal" role="dialog" aria-modal="true" aria-labelledby="landing-flow-title">
         <h3 id="landing-flow-title">Solicitud enviada</h3>
-        <p>Terminaste el flujo de trabajo. Ya cargaste la informaciÃ³n principal de tu emprendimiento y podÃ©s volver al inicio para seguir avanzando desde el panel.</p>
+        <p>Terminaste el flujo de trabajo. Ya cargaste la información principal de tu emprendimiento y podés volver al inicio para seguir avanzando desde el panel.</p>
         <div class="flow-modal-actions">
-            <button class="btn btn-info" type="button" id="landing-flow-next">Ir al inicio</button>
-            <button class="btn btn-cancelar" type="button" id="landing-flow-close">Seguir revisando</button>
+            <button class="btn btn-info im-boton--principal im-boton" type="button" id="landing-flow-next">Ir al inicio</button>
+            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" id="landing-flow-close">Seguir revisando</button>
         </div>
     </div>
 </div>
 
 <script>
-    // SesiÃ³n en consola
+    // Sesión en consola
     const sesion = {
         user_id:          <?= json_encode($_SESSION['user_id']          ?? null) ?>,
         correo:           <?= json_encode($_SESSION['correo']           ?? null) ?>,
@@ -630,7 +626,7 @@ $landingCompleta = !empty($request['completado']);
         apodo:            <?= json_encode($_SESSION['apodo']            ?? null) ?>,
         fecha_nacimiento: <?= json_encode($_SESSION['fecha_nacimiento'] ?? null) ?>,
     };
-    console.group('[Impulsa] SesiÃ³n activa');
+    console.group('[Impulsa] Sesión activa');
     console.table(sesion);
     console.groupEnd();
 
@@ -654,7 +650,7 @@ $landingCompleta = !empty($request['completado']);
     const inputCalle     = document.getElementById('lp-calle');
     const inputNumero    = document.getElementById('lp-numero');
 
-    // Toggle espacio fÃ­sico
+    // Toggle espacio físico
     function updateEspacioFisicoState() {
         const enabled = toggleEspacio.checked;
         addressBlock.style.display = enabled ? 'block' : 'none';
@@ -700,7 +696,7 @@ $landingCompleta = !empty($request['completado']);
             value: categoria.id,
             label: categoria.nombre,
         }));
-        populateSelect(selCategoria, categoriaOptions, 'SeleccionÃ¡ una categorÃ­a', SAVED_CATEGORIA_ID);
+        populateSelect(selCategoria, categoriaOptions, 'Seleccioná una categoría', SAVED_CATEGORIA_ID);
         renderSubcategorias(selCategoria.value || SAVED_CATEGORIA_ID);
     }
 
@@ -713,12 +709,12 @@ $landingCompleta = !empty($request['completado']);
         populateSelect(
             selSubcategoria,
             subcategoriaOptions,
-            categoria ? 'SeleccionÃ¡ una subcategorÃ­a' : 'SeleccionÃ¡ una categorÃ­a primero',
+            categoria ? 'Seleccioná una subcategoría' : 'Seleccioná una categoría primero',
             SAVED_SUBCATEGORIA_ID
         );
     }
 
-    //  API: PaÃ­ses (restcountries.com) 
+    //  API: Países (restcountries.com) 
     async function cargarPaises() {
         if (!toggleEspacio.checked) {
             return;
@@ -731,12 +727,12 @@ $landingCompleta = !empty($request['completado']);
                 .map(c => c.name?.common)
                 .filter(Boolean)
                 .sort((a, b) => a.localeCompare(b, 'es'));
-            populateSelect(selPais, nombres.map(nombre => ({ value: nombre, label: nombre })), 'SeleccionÃ¡ un paÃ­s', SAVED_PAIS);
+            populateSelect(selPais, nombres.map(nombre => ({ value: nombre, label: nombre })), 'Seleccioná un país', SAVED_PAIS);
             selPais.disabled = false;
             if (SAVED_PAIS) cargarProvincias(SAVED_PAIS);
         } catch (e) {
-            console.warn('[LP] Error cargando paÃ­ses:', e);
-            selPais.innerHTML = '<option value="">Error al cargar. EscribÃ­ manualmente.</option>';
+            console.warn('[LP] Error cargando países:', e);
+            selPais.innerHTML = '<option value="">Error al cargar. Escribí manualmente.</option>';
             selPais.disabled = false;
         } finally {
             setLoading(wrapPais, false);
@@ -747,7 +743,7 @@ $landingCompleta = !empty($request['completado']);
     async function cargarProvincias(pais) {
         selProvincia.innerHTML = '<option value="">Cargando...</option>';
         selProvincia.disabled = true;
-        selLocalidad.innerHTML = '<option value="">SeleccionÃ¡ una provincia primero</option>';
+        selLocalidad.innerHTML = '<option value="">Seleccioná una provincia primero</option>';
         selLocalidad.disabled = true;
 
         const wrap = document.getElementById('wrap-provincia');
@@ -761,11 +757,11 @@ $landingCompleta = !empty($request['completado']);
             const data = await res.json();
             const estados = (data.data?.states || []).map(s => s.name).sort((a, b) => a.localeCompare(b, 'es'));
             if (estados.length === 0) throw new Error('Sin datos');
-            populateSelect(selProvincia, estados.map(estado => ({ value: estado, label: estado })), 'SeleccionÃ¡ una provincia', SAVED_PROVINCIA);
+            populateSelect(selProvincia, estados.map(estado => ({ value: estado, label: estado })), 'Seleccioná una provincia', SAVED_PROVINCIA);
             selProvincia.disabled = false;
             if (SAVED_PROVINCIA) cargarLocalidades(pais, SAVED_PROVINCIA);
         } catch {
-            selProvincia.innerHTML = '<option value="">No disponible para este paÃ­s</option>';
+            selProvincia.innerHTML = '<option value="">No disponible para este país</option>';
             selProvincia.disabled = false;
         } finally {
             setLoading(wrap, false);
@@ -788,7 +784,7 @@ $landingCompleta = !empty($request['completado']);
             const data = await res.json();
             const ciudades = (data.data || []).sort((a, b) => a.localeCompare(b, 'es'));
             if (ciudades.length === 0) throw new Error('Sin datos');
-            populateSelect(selLocalidad, ciudades.map(ciudad => ({ value: ciudad, label: ciudad })), 'SeleccionÃ¡ una localidad', SAVED_LOCALIDAD);
+            populateSelect(selLocalidad, ciudades.map(ciudad => ({ value: ciudad, label: ciudad })), 'Seleccioná una localidad', SAVED_LOCALIDAD);
             selLocalidad.disabled = false;
         } catch {
             selLocalidad.innerHTML = '<option value="">No disponible para esta provincia</option>';
@@ -802,9 +798,9 @@ $landingCompleta = !empty($request['completado']);
     selPais.addEventListener('change', () => {
         if (selPais.value) cargarProvincias(selPais.value);
         else {
-            selProvincia.innerHTML = '<option value="">SeleccionÃ¡ un paÃ­s primero</option>';
+            selProvincia.innerHTML = '<option value="">Seleccioná un país primero</option>';
             selProvincia.disabled = true;
-            selLocalidad.innerHTML = '<option value="">SeleccionÃ¡ una provincia primero</option>';
+            selLocalidad.innerHTML = '<option value="">Seleccioná una provincia primero</option>';
             selLocalidad.disabled = true;
         }
     });
@@ -812,7 +808,7 @@ $landingCompleta = !empty($request['completado']);
     selProvincia.addEventListener('change', () => {
         if (selProvincia.value) cargarLocalidades(selPais.value, selProvincia.value);
         else {
-            selLocalidad.innerHTML = '<option value="">SeleccionÃ¡ una provincia primero</option>';
+            selLocalidad.innerHTML = '<option value="">Seleccioná una provincia primero</option>';
             selLocalidad.disabled = true;
         }
     });
@@ -855,15 +851,15 @@ $landingCompleta = !empty($request['completado']);
         const prodCheck = formLanding.querySelector('input[name="vende_productos"]');
         const servCheck = formLanding.querySelector('input[name="vende_servicios"]');
         if (!prodCheck.checked && !servCheck.checked) {
-            showFeedback('error', 'DebÃ©s seleccionar al menos una opciÃ³n: Productos o Servicios');
+            showFeedback('error', 'Debés seleccionar al menos una opción: Productos o Servicios');
             return;
         }
         if (!selCategoria.value) {
-            showFeedback('error', 'SeleccionÃ¡ una categorÃ­a');
+            showFeedback('error', 'Seleccioná una categoría');
             return;
         }
         if (!selSubcategoria.value) {
-            showFeedback('error', 'SeleccionÃ¡ una subcategorÃ­a');
+            showFeedback('error', 'Seleccioná una subcategoría');
             return;
         }
 
@@ -886,7 +882,7 @@ $landingCompleta = !empty($request['completado']);
                 showFeedback('error', data.error ?? 'Error al guardar.');
             }
         } catch {
-            showFeedback('error', 'Error de conexiÃ³n. IntentÃ¡ de nuevo.');
+            showFeedback('error', 'Error de conexión. Intentá de nuevo.');
         } finally {
             btnGuardarLanding.disabled = false;
             btnGuardarLanding.textContent = <?= json_encode($esEdicion ? 'Actualizar solicitud' : 'Enviar solicitud') ?>;

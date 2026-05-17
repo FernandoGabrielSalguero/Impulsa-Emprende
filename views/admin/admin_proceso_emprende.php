@@ -87,11 +87,7 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Proceso Emprende</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -552,13 +548,13 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='admin_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -588,16 +584,16 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Proceso de incubacion</div>
@@ -605,15 +601,15 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
-                <div class="card">
+            <section class="content im-contenido">
+                <div class="card im-tarjeta">
                     <div class="hero-card">
                         <h1>Seguimiento de emprendedores</h1>
                         <p><?= $displayName ?>, aca podes ver en que etapa del recorrido esta cada usuario con rol <strong>impulsa_emprendedor</strong>. El proceso se ordena en mision, vision, buyer persona y luego la habilitacion para solicitar la landing page.</p>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <p class="section-title">Resumen del proceso</p>
                     <div class="summary-grid">
                         <div class="summary-card">
@@ -664,9 +660,9 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <p class="section-title">Detalle por usuario</p>
-                    <div class="table-wrap">
+                    <div class="table-wrap im-tabla-contenedor">
                         <table class="users-table">
                             <thead>
                                 <tr>
@@ -761,19 +757,19 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
                                             <td><?= htmlspecialchars((string) ($usuario['correo'] ?? ''), ENT_QUOTES, 'UTF-8') ?></td>
                                             <td>
                                                 <?php if (!empty($usuario['email_verified_at'])): ?>
-                                                    <span class="badge badge-step-4">
+                                                    <span class="badge badge-step-4 im-chip">
                                                         <span class="material-icons" style="font-size:14px">verified</span>
                                                         Verificado
                                                     </span>
                                                 <?php else: ?>
-                                                    <span class="badge badge-step-2">
+                                                    <span class="badge badge-step-2 im-chip">
                                                         <span class="material-icons" style="font-size:14px">warning</span>
                                                         Pendiente
                                                     </span>
                                                 <?php endif; ?>
                                             </td>
                                             <td>
-                                                <span class="badge <?= $badgeClass ?>">
+                                                <span class="badge <?= $badgeClass ?> im-chip">
                                                     <span class="material-icons" style="font-size:14px"><?= $pasoActual === 4 ? 'check_circle' : 'pending_actions' ?></span>
                                                     <?= htmlspecialchars((string) ($usuario['estado_etapa'] ?? ''), ENT_QUOTES, 'UTF-8') ?>
                                                 </span>
@@ -782,16 +778,16 @@ foreach ($emprendedoresProceso as $usuarioDetalle) {
                                                 <div class="progress-list">
                                                     <?php foreach ($progreso as $item): ?>
                                                         <span class="progress-step <?= $item['done'] ? 'is-done' : '' ?>">
-                                                            <span class="progress-chip <?= $item['done'] ? 'is-done' : '' ?> <?= !$item['done'] && $item['current'] ? 'is-current' : '' ?>">
+                                                            <span class="progress-chip <?= $item['done'] ? 'is-done' : '' ?> !$item['done'] && $item['current'] 'is-current'">
                                                                 <?= htmlspecialchars($item['short'], ENT_QUOTES, 'UTF-8') ?>
                                                             </span>
-                                                            <span class="progress-chip-label <?= $item['done'] ? 'is-done' : '' ?> <?= !$item['done'] && $item['current'] ? 'is-current' : '' ?>"><?= htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                            <span class="progress-chip-label <?= $item['done'] ? 'is-done' : '' ?> !$item['done'] && $item['current'] 'is-current'"><?= htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8') ?></span>
                                                         </span>
                                                     <?php endforeach; ?>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="badge <?= $landingSolicitada ? 'badge-step-4' : 'badge-step-2' ?>">
+                                                <span class="badge <?= $landingSolicitada ? 'badge-step-4' : 'badge-step-2' ?> im-chip">
                                                     <?= $landingSolicitada ? 'Solicitada' : 'Pendiente' ?>
                                                 </span>
                                             </td>

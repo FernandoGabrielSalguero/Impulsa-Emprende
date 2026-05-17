@@ -1,13 +1,13 @@
 <?php if (!empty($planesPublicados)): ?>
 <div class="plan-grid">
     <?php foreach ($planesPublicados as $plan): ?>
-        <article class="marketing-card plan-card">
+        <article class="marketing-card plan-card im-tarjeta">
             <div class="plan-head">
                 <div>
                     <h2><?= mh($plan['name'] ?? '') ?></h2>
                     <p class="muted"><?= mh($plan['short_description'] ?? '') ?></p>
                 </div>
-                <span class="pill">Publicado</span>
+                <span class="pill im-chip">Publicado</span>
             </div>
             <p><?= nl2br(mh($plan['full_description'] ?? '')) ?></p>
             <ul class="feature-list">
@@ -26,11 +26,11 @@
                         </span>
                     </label>
                 <?php endforeach; ?>
-                <button type="submit" class="btn btn-aceptar">Solicitar este plan</button>
+                <button type="submit" class="btn btn-aceptar im-boton im-boton--principal">Solicitar este plan</button>
             </form>
         </article>
     <?php endforeach; ?>
 </div>
 <?php else: ?>
-<div class="marketing-card empty">Todavia no hay planes publicados disponibles.</div>
+<div class="marketing-card empty im-tarjeta">Todavia no hay planes publicados disponibles.</div>
 <?php endif; ?>

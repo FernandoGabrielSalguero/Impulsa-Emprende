@@ -49,9 +49,7 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsa - Dashboard cliente</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
     <style>
         .navbar { justify-content: space-between; }
         .navbar-left { display:flex; align-items:center; gap:8px; }
@@ -124,28 +122,28 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
     </style>
 </head>
 <body>
-<div class="layout">
-    <aside class="sidebar" id="sidebar">
+<div class="layout im-aplicacion">
+    <aside class="sidebar im-menu-lateral" id="sidebar">
         <div class="sidebar-header">
             <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
             <span class="logo-text">impulsa emprende</span>
         </div>
-        <nav class="sidebar-menu"><ul>
+        <nav class="sidebar-menu im-navegacion"><ul>
             <li class="active" onclick="location.href='clientes_dashboard.php'"><span class="material-icons">home</span><span class="link-text">Mi proyecto</span></li>
             <li onclick="location.href='clientes_metricas.php'"><span class="material-icons" style="color:#0f766e">query_stats</span><span class="link-text">Metricas</span></li>
             <li onclick="location.href='../marketing/marketing_user.php'"><span class="material-icons" style="color:#0f766e">campaign</span><span class="link-text">Marketing</span></li>
             <li onclick="location.href='../../logout.php?redirect=https%3A%2F%2Fimpulsagroup.com%2F'"><span class="material-icons" style="color:red">logout</span><span class="link-text">Salir</span></li>
         </ul></nav>
-        <div class="sidebar-footer"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
+        <div class="sidebar-footer"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
     </aside>
-    <div class="main">
-        <header class="navbar">
-            <div class="navbar-left"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Dashboard del cliente</div></div>
+    <div class="main im-contenedor">
+        <header class="navbar im-barra-superior">
+            <div class="navbar-left"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Dashboard del cliente</div></div>
             <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
         </header>
-        <section class="content">
+        <section class="content im-contenido">
             <?php if (($flash['message'] ?? '') !== ''): ?>
-                <div class="flash <?= ($flash['type'] ?? '') === 'success' ? 'success' : 'error' ?>"><?= htmlspecialchars((string) $flash['message'], ENT_QUOTES, 'UTF-8') ?></div>
+                <div class="flash <?= ($flash['type'] ?? '') === 'success' ? : 'error' ?>"><?= htmlspecialchars((string) $flash['message'], ENT_QUOTES, 'UTF-8') ?></div>
             <?php endif; ?>
             <div class="section-card hero-card" style="margin-bottom:16px;">
                 <h1>Hola, <?= $displayName ?></h1>
@@ -171,10 +169,10 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                                     <p class="muted" style="margin-top:8px;">Lee el contrato de tu proyecto y firmalo desde este panel cuando estes de acuerdo.</p>
                                 </div>
                                 <div class="contract-meta">
-                                    <span class="badge contract-pending">
+                                    <span class="badge contract-pending im-chip">
                                         Version <?= max(1, $contractVersion) ?>
                                     </span>
-                                    <span class="badge <?= $isContractSigned ? 'contract-signed' : 'contract-pending' ?>">
+                                    <span class="badge <?= $isContractSigned ? 'contract-signed' : 'contract-pending' ?> im-chip">
                                         <?= $isContractSigned ? 'Firmado' : 'Pendiente de firma' ?>
                                     </span>
                                 </div>
@@ -191,7 +189,7 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                                 <?php endif; ?>
                             </div>
                             <div class="contract-actions">
-                                <button type="button" class="btn btn-aceptar" id="openContractModal">Leer contrato</button>
+                                <button type="button" class="btn btn-aceptar im-boton im-boton--principal" id="openContractModal">Leer contrato</button>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -221,7 +219,7 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                                                 <span class="mini-meta">Entrega <?= !empty($phase['due_date']) ? htmlspecialchars(date('d/m/Y', strtotime((string) $phase['due_date'])), ENT_QUOTES, 'UTF-8') : '-' ?></span>
                                             </div>
                                         </div>
-                                        <span class="badge <?= htmlspecialchars((string) ($phase['status'] ?? 'pending'), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($statusLabels[(string) ($phase['status'] ?? 'pending')] ?? (string) ($phase['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
+                                        <span class="badge <?= htmlspecialchars((string) ($phase['status'] ?? 'pending'), ENT_QUOTES, 'UTF-8') ?> im-chip"><?= htmlspecialchars($statusLabels[(string) ($phase['status'] ?? 'pending')] ?? (string) ($phase['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
                                     </div>
                                     <div class="deliverable-list">
                                         <?php $phaseDeliverables = $deliverablesByPhase[(int) ($phase['id'] ?? 0)] ?? []; ?>
@@ -246,7 +244,7 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                                                             <span class="subtle">Entrega <?= !empty($deliverable['due_date']) ? htmlspecialchars(date('d/m/Y', strtotime((string) ($deliverable['due_date'] ?? ''))), ENT_QUOTES, 'UTF-8') : (!empty($phase['due_date']) ? htmlspecialchars(date('d/m/Y', strtotime((string) $phase['due_date'])), ENT_QUOTES, 'UTF-8') : '-') ?></span>
                                                         </div>
                                                     </div>
-                                                    <span class="badge <?= htmlspecialchars((string) ($deliverable['status'] ?? 'pending'), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($statusLabels[(string) ($deliverable['status'] ?? 'pending')] ?? (string) ($deliverable['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
+                                                    <span class="badge <?= htmlspecialchars((string) ($deliverable['status'] ?? 'pending'), ENT_QUOTES, 'UTF-8') ?> im-chip"><?= htmlspecialchars($statusLabels[(string) ($deliverable['status'] ?? 'pending')] ?? (string) ($deliverable['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
                                                 </div>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -307,8 +305,8 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                         <span>Confirmo que lei el contrato completo, comprendo sus condiciones y acepto firmarlo electronicamente.</span>
                     </label>
                     <div class="contract-actions">
-                        <button type="submit" class="btn btn-aceptar">Firmar contrato</button>
-                        <button type="button" class="btn" id="contractCancelButton">Cerrar</button>
+                        <button type="submit" class="btn btn-aceptar im-boton im-boton--principal">Firmar contrato</button>
+                        <button type="button" class="btn im-boton" id="contractCancelButton">Cerrar</button>
                     </div>
                 </form>
             <?php else: ?>
@@ -318,7 +316,7 @@ foreach (($selectedProject['deliverables'] ?? []) as $deliverable) {
                         <?= $contractSignedAt !== '' ? ' el ' . htmlspecialchars(date('d/m/Y H:i', strtotime($contractSignedAt)), ENT_QUOTES, 'UTF-8') : '' ?>.
                     </div>
                     <div class="contract-actions">
-                        <button type="button" class="btn" id="contractCancelButton">Cerrar</button>
+                        <button type="button" class="btn im-boton" id="contractCancelButton">Cerrar</button>
                     </div>
                 </div>
             <?php endif; ?>

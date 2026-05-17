@@ -1,4 +1,4 @@
-<section class="marketing-card">
+<section class="marketing-card im-tarjeta">
     <h2>Metricas de campañas</h2>
     <div class="metrics-grid">
         <?php foreach ($metricasUsuario as $metric): ?>

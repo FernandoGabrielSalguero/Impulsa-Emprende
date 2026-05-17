@@ -69,9 +69,7 @@ foreach ($contactos as $contacto) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsa - Metricas</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
     <style>
         .navbar { justify-content: space-between; }
         .navbar-left { display:flex; align-items:center; gap:8px; }
@@ -173,32 +171,32 @@ foreach ($contactos as $contacto) {
     </style>
 </head>
 <body>
-<div class="layout">
-    <aside class="sidebar" id="sidebar">
+<div class="layout im-aplicacion">
+    <aside class="sidebar im-menu-lateral" id="sidebar">
         <div class="sidebar-header">
             <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
             <span class="logo-text">impulsa emprende</span>
         </div>
-        <nav class="sidebar-menu"><ul>
+        <nav class="sidebar-menu im-navegacion"><ul>
             <li onclick="location.href='clientes_dashboard.php'"><span class="material-icons">home</span><span class="link-text">Mi proyecto</span></li>
             <li class="active" onclick="location.href='clientes_metricas.php'"><span class="material-icons" style="color:#0f766e">query_stats</span><span class="link-text">Metricas</span></li>
             <li onclick="location.href='../marketing/marketing_user.php'"><span class="material-icons" style="color:#0f766e">campaign</span><span class="link-text">Marketing</span></li>
             <li onclick="location.href='../../logout.php?redirect=https%3A%2F%2Fimpulsagroup.com%2F'"><span class="material-icons" style="color:red">logout</span><span class="link-text">Salir</span></li>
         </ul></nav>
-        <div class="sidebar-footer"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
+        <div class="sidebar-footer"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
     </aside>
-    <div class="main">
-        <header class="navbar">
-            <div class="navbar-left"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Metricas</div></div>
+    <div class="main im-contenedor">
+        <header class="navbar im-barra-superior">
+            <div class="navbar-left"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Metricas</div></div>
             <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
         </header>
-        <section class="content page-stack">
+        <section class="content page-stack im-contenido">
             <div class="section-card hero-card">
                 <h1>Metricas de tu pagina</h1>
                 <p class="muted">
                     Hola, <?= $displayName ?>. En esta página, vamos a mostrarte las visitas que tuviste en tu página web y además, las consultas enviadas desde el formulario. 
                     <?php if ($pageParam !== null): ?>
-                        <span class="badge"><?= metricasEscape($pageParam) ?></span>
+                        <span class="badge im-chip"><?= metricasEscape($pageParam) ?></span>
                     <?php endif; ?>
                 </p>
             </div>
@@ -228,7 +226,7 @@ foreach ($contactos as $contacto) {
                 <div class="section-card">
                     <h2>Consultas recibidas</h2>
                     <p class="muted" style="margin-top:8px;">Listado de las consultas realizadas en tu página web.</p>
-                    <div class="table-wrap">
+                    <div class="table-wrap im-tabla-contenedor">
                         <table class="metrics-table">
                             <thead>
                                 <tr>

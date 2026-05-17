@@ -15,12 +15,7 @@ $correoVerificado = !empty($perfil['check_correo']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa — Admin</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .profile-card {
@@ -158,15 +153,15 @@ $correoVerificado = !empty($perfil['check_correo']);
 </head>
 
 <body>
-    <div class="layout">
+    <div class="layout im-aplicacion">
 
         <!-- SIDEBAR -->
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li class="active" onclick="location.href='admin_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -196,19 +191,19 @@ $correoVerificado = !empty($perfil['check_correo']);
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
         <!-- MAIN -->
-        <div class="main">
+        <div class="main im-contenedor">
 
             <!-- NAVBAR -->
-            <header class="navbar">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Panel de administración</div>
@@ -217,27 +212,27 @@ $correoVerificado = !empty($perfil['check_correo']);
             </header>
 
             <!-- CONTENIDO -->
-            <section class="content">
+            <section class="content im-contenido">
 
                 <!-- Bienvenida -->
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="profile-card">
                         <div class="profile-avatar"><?php if ($avatarUrl): ?><img src="<?= htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8') ?>" alt="Avatar del usuario"><?php else: ?><?= htmlspecialchars($avatarInitial, ENT_QUOTES, 'UTF-8') ?><?php endif; ?></div>
                         <div class="profile-info">
                             <h2>Hola, <?= $displayName ?></h2>
                             <p><?= htmlspecialchars($perfil['correo'] ?? $_SESSION['correo'] ?? '', ENT_QUOTES, 'UTF-8') ?></p>
                             <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-                                <span class="badge badge-admin">
+                                <span class="badge badge-admin im-chip">
                                     <span class="material-icons" style="font-size:14px">admin_panel_settings</span>
                                     Administrador
                                 </span>
                                 <?php if ($correoVerificado): ?>
-                                    <span class="badge badge-success">
+                                    <span class="badge badge-success im-chip">
                                         <span class="material-icons" style="font-size:14px">verified</span>
                                         Correo verificado
                                     </span>
                                 <?php else: ?>
-                                    <span class="badge badge-warning">
+                                    <span class="badge badge-warning im-chip">
                                         <span class="material-icons" style="font-size:14px">warning</span>
                                         Correo sin verificar
                                     </span>
@@ -248,7 +243,7 @@ $correoVerificado = !empty($perfil['check_correo']);
                 </div>
 
                 <!-- KPIs -->
-                <div class="card">
+                <div class="card im-tarjeta">
                     <p class="section-title">Usuarios de la plataforma</p>
                     <div class="kpi-grid">
                         <div class="kpi-card">
@@ -290,9 +285,9 @@ $correoVerificado = !empty($perfil['check_correo']);
                 </div>
 
                 <!-- Últimos registros -->
-                <div class="card">
+                <div class="card im-tarjeta">
                     <p class="section-title">Últimos registros</p>
-                    <div class="table-wrap">
+                    <div class="table-wrap im-tabla-contenedor">
                         <table class="users-table">
                             <thead>
                                 <tr>
@@ -331,7 +326,7 @@ $correoVerificado = !empty($perfil['check_correo']);
                                             </td>
                                             <td><?= htmlspecialchars($u['correo'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                                             <td>
-                                                <span class="badge <?= $badgeClass ?>">
+                                                <span class="badge <?= $badgeClass ?> im-chip">
                                                     <?= htmlspecialchars($rolLabel, ENT_QUOTES, 'UTF-8') ?>
                                                 </span>
                                             </td>

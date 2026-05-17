@@ -26,10 +26,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Tareas</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -368,13 +365,13 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='admin_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -404,16 +401,16 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Tareas pendientes</div>
@@ -421,7 +418,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
+            <section class="content im-contenido">
                 <?php if (($flash['message'] ?? '') !== ''): ?>
                     <div class="flash-message <?= htmlspecialchars((string) $flash['type'], ENT_QUOTES, 'UTF-8') ?>">
                         <?= htmlspecialchars((string) $flash['message'], ENT_QUOTES, 'UTF-8') ?>
@@ -434,7 +431,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                     </div>
                 <?php endif; ?>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="hero-card">
                         <div class="hero-card-header">
                             <div>
@@ -449,7 +446,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="tasks-card-header">
                         <div style="display:grid;gap:8px">
                             <h2 class="section-title">Tareas creadas</h2>
@@ -458,7 +455,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                         <span class="tasks-count"><?= count($tareasPendientes) ?></span>
                     </div>
 
-                    <div class="table-wrap modern limited-rows">
+                    <div class="table-wrap modern limited-rows im-tabla-contenedor">
                         <table class="tasks-table">
                             <thead>
                                 <tr>
@@ -534,7 +531,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="tasks-card-header">
                         <div style="display:grid;gap:8px">
                             <h2 class="section-title">Tareas finalizadas</h2>
@@ -543,7 +540,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                         <span class="tasks-count done"><?= count($tareasFinalizadas) ?></span>
                     </div>
 
-                    <div class="table-wrap modern">
+                    <div class="table-wrap modern im-tabla-contenedor">
                         <table class="tasks-table">
                             <thead>
                                 <tr>
@@ -637,7 +634,7 @@ $tareasFinalizadas = array_values(array_filter($tareas, static fn(array $tarea):
                 <form class="task-form" method="post" action="admin_tareas.php">
                     <input type="hidden" name="action" value="create_task">
 
-                    <div class="form-grid">
+                    <div class="form-grid im-grilla">
                         <div class="field">
                             <label for="nombre_tarea">Nombre tarea</label>
                             <input id="nombre_tarea" name="nombre_tarea" type="text" maxlength="180" required>

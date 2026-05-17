@@ -19,11 +19,7 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Mi espacio</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .profile-card {
@@ -235,13 +231,13 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li class="active" onclick="location.href='emprendedor_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -274,16 +270,16 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Mi espacio</div>
@@ -291,20 +287,20 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
-                <div class="card">
+            <section class="content im-contenido">
+                <div class="card im-tarjeta">
                     <div class="profile-card">
                         <div class="profile-avatar"><?php if ($avatarUrl): ?><img src="<?= htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8') ?>" alt="Avatar del usuario"><?php else: ?><?= htmlspecialchars($avatarInitial, ENT_QUOTES, 'UTF-8') ?><?php endif; ?></div>
                         <div class="profile-info">
                             <h2>Hola, <?= $displayName ?></h2>
                             <p><?= htmlspecialchars($perfil['correo'] ?? $_SESSION['correo'] ?? '', ENT_QUOTES, 'UTF-8') ?></p>
                             <?php if ($correoVerificado): ?>
-                                <span class="badge badge-success" style="margin-top:6px">
+                                <span class="badge badge-success im-chip" style="margin-top:6px">
                                     <span class="material-icons" style="font-size:14px">verified</span>
                                     Correo verificado
                                 </span>
                             <?php else: ?>
-                                <span class="badge badge-warning" style="margin-top:6px">
+                                <span class="badge badge-warning im-chip" style="margin-top:6px">
                                     <span class="material-icons" style="font-size:14px">warning</span>
                                     Correo sin verificar
                                 </span>
@@ -314,7 +310,7 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                 </div>
 
                 <?php if (!$ocultarIntro): ?>
-                    <div class="card intro-card">
+                    <div class="card intro-card im-tarjeta">
                         <h3>¡Qué lindo tenerte acá!</h3>
                         <p>Estás empezando un camino muy importante: darle forma a tu emprendimiento con una base firme.</p>
                         <p>En este recorrido vamos a acompañarte para ordenar ideas clave como tu misión, tu visión y tu buyer persona. Tener esto claro te va a ayudar a entender mejor tu emprendimiento, comunicarlo con más seguridad y prepararte para crecer.</p>
@@ -326,7 +322,7 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                 <?php endif; ?>
 
                 <div class="roadmap-grid">
-                    <div class="card roadmap-card">
+                    <div class="card roadmap-card im-tarjeta">
                         <div>
                             <span class="roadmap-step">Paso 1</span>
                             <h4>Tu misión</h4>
@@ -337,11 +333,11 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                             <?php endif; ?>
                         </div>
                         <?php if (!$misionCompletada): ?>
-                            <button class="btn btn-aceptar" type="button" onclick="location.href='emprendedor_mision.php'">Creemos tu misión</button>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="button" onclick="location.href='emprendedor_mision.php'">Creemos tu misión</button>
                         <?php endif; ?>
                     </div>
 
-                    <div class="card roadmap-card">
+                    <div class="card roadmap-card im-tarjeta">
                         <div>
                             <span class="roadmap-step">Paso 2</span>
                             <h4>Tu visión</h4>
@@ -352,11 +348,11 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                             <?php endif; ?>
                         </div>
                         <?php if (!$visionCompletada): ?>
-                            <button class="btn btn-aceptar" type="button" onclick="location.href='emprendedor_vision.php'">Creemos tu visión</button>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="button" onclick="location.href='emprendedor_vision.php'">Creemos tu visión</button>
                         <?php endif; ?>
                     </div>
 
-                    <div class="card roadmap-card">
+                    <div class="card roadmap-card im-tarjeta">
                         <div>
                             <span class="roadmap-step">Paso 3</span>
                             <h4>Tu buyer persona</h4>
@@ -367,11 +363,11 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                             <?php endif; ?>
                         </div>
                         <?php if (!$buyerPersonaCompletado): ?>
-                            <button class="btn btn-aceptar" type="button" onclick="location.href='emprendedor_buyerPersona.php'">Creemos tu buyer persona</button>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="button" onclick="location.href='emprendedor_buyerPersona.php'">Creemos tu buyer persona</button>
                         <?php endif; ?>
                     </div>
 
-                    <div class="card roadmap-card">
+                    <div class="card roadmap-card im-tarjeta">
                         <div>
                             <span class="roadmap-step">Paso 4</span>
                             <h4>Tu página web</h4>
@@ -395,7 +391,7 @@ $ocultarIntro = $misionCompletada && $visionCompletada && $buyerPersonaCompletad
                             </ul>
                         </div>
                         <?php if (!$landingPageCompletada): ?>
-                            <button class="btn btn-aceptar" type="button" onclick="location.href='landing_page_request.php'" <?= $landingDisponible ? '' : 'disabled' ?>>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="button" onclick="location.href='landing_page_request.php'" <?= $landingDisponible ? '' : 'disabled' ?>>
                                 Creemos tu landing page
                             </button>
                         <?php endif; ?>

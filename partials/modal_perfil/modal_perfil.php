@@ -245,7 +245,7 @@ $avatarInitial = obtenerInicialAvatar($avatarLabel);
 
         <div class="perfil-header">
             <h3 id="perfil-title">Mi perfil</h3>
-            <button class="btn-icon" id="btn-cerrar-perfil" aria-label="Cerrar">
+            <button class="btn-icon im-boton-icono" id="btn-cerrar-perfil" aria-label="Cerrar">
                 <span class="material-icons">close</span>
             </button>
         </div>
@@ -361,7 +361,7 @@ $avatarInitial = obtenerInicialAvatar($avatarLabel);
                 <div class="perfil-file-name" id="perfil-file-name">Ningun archivo seleccionado</div>
                 <span class="perfil-hint">Opcional. Formatos permitidos: JPG, PNG o WEBP. Tamaño máximo: 3 MB.</span>
             </div>
-            <button class="btn btn-aceptar" type="submit" id="btn-guardar-perfil" style="width:100%;margin-top:20px">
+            <button class="btn btn-aceptar im-boton im-boton--principal" type="submit" id="btn-guardar-perfil" style="width:100%;margin-top:20px">
                 Guardar cambios
             </button>
 

@@ -1,10 +1,10 @@
-<section class="marketing-card">
+<section class="marketing-card im-tarjeta">
     <div class="plan-head">
         <div>
             <h2>Plan contratado</h2>
             <p class="muted"><?= mh($suscripcionActual['plan_name'] ?? '-') ?></p>
         </div>
-        <span class="pill success">Activo</span>
+        <span class="pill success im-chip">Activo</span>
     </div>
     <div class="detail-grid">
         <div><small>Duracion contratada</small><strong><?= (int) ($suscripcionActual['duration_months'] ?? 0) ?> meses</strong></div>

@@ -12,12 +12,12 @@ $marketingRol = (string) ($_SESSION['rol'] ?? '');
 $isMarketingStaffNav = in_array($marketingRol, ['impulsa_administrador', 'impulsa_marketing'], true);
 $isAdminNav = $marketingRol === 'impulsa_administrador';
 ?>
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar im-menu-lateral" id="sidebar">
     <div class="sidebar-header">
         <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
         <span class="logo-text">impulsa emprende</span>
     </div>
-    <nav class="sidebar-menu">
+    <nav class="sidebar-menu im-navegacion">
         <ul>
             <?php if ($isAdminNav): ?>
                 <li onclick="location.href='../admin/admin_dashboard.php'"><span class="material-icons" style="color:#6366f1">home</span><span class="link-text">Inicio</span></li>
@@ -68,6 +68,6 @@ $isAdminNav = $marketingRol === 'impulsa_administrador';
         </ul>
     </nav>
     <div class="sidebar-footer">
-        <button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button>
+        <button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button>
     </div>
 </aside>

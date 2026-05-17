@@ -72,10 +72,8 @@ $phasePlans = array_values($phasePlans);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsa - Proyecto desde solicitud</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
     <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     <style>
         .navbar { justify-content: space-between; }
@@ -137,13 +135,13 @@ $phasePlans = array_values($phasePlans);
     </style>
 </head>
 <body>
-<div class="layout">
-    <aside class="sidebar" id="sidebar">
+<div class="layout im-aplicacion">
+    <aside class="sidebar im-menu-lateral" id="sidebar">
         <div class="sidebar-header">
             <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
             <span class="logo-text">impulsa emprende</span>
         </div>
-        <nav class="sidebar-menu"><ul>
+        <nav class="sidebar-menu im-navegacion"><ul>
             <li onclick="location.href='admin_dashboard.php'"><span class="material-icons" style="color:#6366f1">home</span><span class="link-text">Inicio</span></li>
             <li onclick="location.href='admin_users.php'"><span class="material-icons" style="color:#2563eb">group</span><span class="link-text">Usuarios</span></li>
             <li onclick="location.href='admin_proceso_emprende.php'"><span class="material-icons" style="color:#0f766e">assignment</span><span class="link-text">Proceso emprende</span></li>
@@ -152,16 +150,16 @@ $phasePlans = array_values($phasePlans);
             <?php require __DIR__ . '/../../partials/marketing_submenu.php'; ?>
             <li onclick="location.href='../../logout.php'"><span class="material-icons" style="color:red">logout</span><span class="link-text">Salir</span></li>
         </ul></nav>
-        <div class="sidebar-footer"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
+        <div class="sidebar-footer"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons" id="collapseIcon">chevron_left</span></button></div>
     </aside>
-    <div class="main">
-        <header class="navbar">
-            <div class="navbar-left"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Proyecto desde solicitud</div></div>
+    <div class="main im-contenedor">
+        <header class="navbar im-barra-superior">
+            <div class="navbar-left"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Proyecto desde solicitud</div></div>
             <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
         </header>
-        <section class="content stack">
+        <section class="content stack im-contenido">
             <?php if ($flash['message'] !== ''): ?>
-                <div class="flash <?= $flash['type'] === 'success' ? 'success' : 'error' ?>"><?= htmlspecialchars($flash['message'], ENT_QUOTES, 'UTF-8') ?></div>
+                <div class="flash <?= $flash['type'] === 'success' ? : 'error' ?>"><?= htmlspecialchars($flash['message'], ENT_QUOTES, 'UTF-8') ?></div>
             <?php endif; ?>
 
             <?php if (empty($selectedProject)): ?>
@@ -176,7 +174,7 @@ $phasePlans = array_values($phasePlans);
                                 <h1>Solicitud #<?= (int) ($sourceRequest['id'] ?? 0) ?></h1>
                                 <p class="muted" style="margin-top:8px;">Los proyectos solo se crean desde una solicitud seleccionada.</p>
                             </div>
-                            <span class="badge planned">Nuevo proyecto</span>
+                            <span class="badge planned im-chip">Nuevo proyecto</span>
                         </div>
                         <div class="meta-grid">
                             <div class="meta-card"><span class="label">Solicitante</span><span class="value"><?= htmlspecialchars((string) ($sourceRequest['nombre'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span></div>
@@ -231,7 +229,7 @@ $phasePlans = array_values($phasePlans);
                             <p class="muted" style="margin:6px 0 0;">Debe coincidir exactamente con la columna page de visit_user_page y forms_clients_contact.</p>
                         </div>
                         <div class="phase-list" id="phase-rows"></div>
-                        <div class="btn-row" style="margin-top:14px;"><button class="btn btn-aceptar" type="button" id="add-phase-row">Agregar fase</button><button class="btn btn-aceptar" type="submit">Crear proyecto</button></div>
+                        <div class="btn-row" style="margin-top:14px;"><button class="btn btn-aceptar im-boton im-boton--principal" type="button" id="add-phase-row">Agregar fase</button><button class="btn btn-aceptar im-boton im-boton--principal" type="submit">Crear proyecto</button></div>
                     </div>
                 </form>
             <?php else: ?>
@@ -245,10 +243,10 @@ $phasePlans = array_values($phasePlans);
                             <div class="title-stack">
                                 <h1><?= htmlspecialchars((string) ($selectedProject['project_name'] ?? ''), ENT_QUOTES, 'UTF-8') ?></h1>
                                 <div class="project-title-meta">
-                                    <span class="badge <?= $hasContract ? 'contract-pending' : 'contract-none' ?>">
+                                    <span class="badge <?= $hasContract ? 'contract-pending' : 'contract-none' ?> im-chip">
                                         <?= $hasContract ? 'Con contrato v' . max(1, $contractVersion) : 'Sin contrato' ?>
                                     </span>
-                                    <span class="badge <?= $isContractSigned ? 'contract-signed' : 'contract-pending' ?>">
+                                    <span class="badge <?= $isContractSigned ? 'contract-signed' : 'contract-pending' ?> im-chip">
                                         <?= $isContractSigned ? 'Firmado' : 'Pendiente de firma' ?>
                                     </span>
                                 </div>
@@ -260,7 +258,7 @@ $phasePlans = array_values($phasePlans);
                                     </p>
                                 <?php endif; ?>
                             </div>
-                            <span class="badge <?= htmlspecialchars((string) ($selectedProject['status'] ?? 'planned'), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($projectStatusLabels[(string) ($selectedProject['status'] ?? 'planned')] ?? (string) ($selectedProject['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
+                            <span class="badge <?= htmlspecialchars((string) ($selectedProject['status'] ?? 'planned'), ENT_QUOTES, 'UTF-8') ?> im-chip"><?= htmlspecialchars($projectStatusLabels[(string) ($selectedProject['status'] ?? 'planned')] ?? (string) ($selectedProject['status'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
                         </div>
                         <div class="meta-grid">
                             <div class="meta-card"><span class="label">Solicitante</span><span class="value"><?= htmlspecialchars((string) ($sourceRequest['nombre'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span></div>
@@ -297,8 +295,8 @@ $phasePlans = array_values($phasePlans);
                         </div>
                         <input type="hidden" name="status" value="<?= htmlspecialchars((string) ($selectedProject['status'] ?? 'planned'), ENT_QUOTES, 'UTF-8') ?>">
                         <div class="btn-row">
-                            <button class="btn btn-aceptar" type="submit">Guardar datos</button>
-                            <button class="btn btn-aceptar" type="button" id="open-contract-modal">Anadir contrato</button>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="submit">Guardar datos</button>
+                            <button class="btn btn-aceptar im-boton im-boton--principal" type="button" id="open-contract-modal">Anadir contrato</button>
                         </div>
                     </form>
                 </div>
@@ -320,7 +318,7 @@ $phasePlans = array_values($phasePlans);
                         <p class="muted" style="margin:6px 0 0;">Debe coincidir exactamente con la columna page de visit_user_page y forms_clients_contact.</p>
                     </div>
                     <div class="phase-list" id="phase-rows"></div>
-                    <div class="btn-row"><button class="btn btn-aceptar" type="button" id="add-phase-row">Agregar fase</button><button class="btn btn-aceptar" type="submit">Guardar plan</button></div>
+                    <div class="btn-row"><button class="btn btn-aceptar im-boton im-boton--principal" type="button" id="add-phase-row">Agregar fase</button><button class="btn btn-aceptar im-boton im-boton--principal" type="submit">Guardar plan</button></div>
                 </form>
             <?php endif; ?>
         </section>
@@ -371,8 +369,8 @@ $phasePlans = array_values($phasePlans);
                 </p>
 
                 <div class="btn-row">
-                    <button class="btn btn-aceptar" type="submit" <?= $isContractSigned ? 'disabled' : '' ?>>Guardar contrato</button>
-                    <button class="btn" type="button" id="cancel-contract-modal">Cancelar</button>
+                    <button class="btn btn-aceptar im-boton im-boton--principal" type="submit" <?= $isContractSigned ? 'disabled' : '' ?>>Guardar contrato</button>
+                    <button class="btn im-boton" type="button" id="cancel-contract-modal">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -395,7 +393,7 @@ $phasePlans = array_values($phasePlans);
         <div>
             <div class="header-row" style="margin-bottom:10px;">
                 <strong>Entregables</strong>
-                <button type="button" class="btn btn-aceptar" data-add-deliverable>Agregar entregable</button>
+                <button type="button" class="btn btn-aceptar im-boton im-boton--principal" data-add-deliverable>Agregar entregable</button>
             </div>
             <div class="deliverable-list" data-deliverable-list></div>
         </div>

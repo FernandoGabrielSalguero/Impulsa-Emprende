@@ -21,11 +21,7 @@ $visionCompletada = !empty($vision['completado']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impulsa - Tu visión</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -344,13 +340,13 @@ $visionCompletada = !empty($vision['completado']);
 </head>
 
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='emprendedor_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -383,16 +379,16 @@ $visionCompletada = !empty($vision['completado']);
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Tu visión</div>
@@ -400,7 +396,7 @@ $visionCompletada = !empty($vision['completado']);
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
+            <section class="content im-contenido">
                 <div class="step-card">
                     <div class="step-hero">
                         <span class="step-badge">Paso 2</span>
@@ -413,15 +409,15 @@ $visionCompletada = !empty($vision['completado']);
                     </div>
 
                     <div class="step-grid">
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Para qué sirve?</h3>
                             <p>Te ayuda a proyectar crecimiento, tomar decisiones con más foco y mostrar una dirección clara para tu marca.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué vamos a trabajar?</h3>
                             <p>Cómo te gustaría ver tu emprendimiento en el futuro, qué lugar querés ocupar en el mercado y qué impacto querés generar.</p>
                         </div>
-                        <div class="card step-panel">
+                        <div class="card step-panel im-tarjeta">
                             <h3>¿Qué preguntas tengo que hacerme?</h3>
                             <ul>
                                 <li>¿En qué quiero que se convierta mi emprendimiento en 3 o 5 años?</li>
@@ -481,10 +477,10 @@ $visionCompletada = !empty($vision['completado']);
 
                     <div class="step-actions-card">
                         <div class="step-actions">
-                            <button class="btn btn-info" type="button" id="save-vision">Guardar visión</button>
-                            <button class="btn btn-cancelar" type="button" onclick="history.back()">Ir atrás</button>
+                            <button class="btn btn-info im-boton--principal im-boton" type="button" id="save-vision">Guardar visión</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="history.back()">Ir atrás</button>
                             
-                            <button class="btn btn-cancelar" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
+                            <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" onclick="location.href='emprendedor_dashboard.php'">Volver al inicio</button>
                         </div>
                     </div>
                 </div>
@@ -513,8 +509,8 @@ $visionCompletada = !empty($vision['completado']);
             <h3 id="vision-flow-title">Visión guardada</h3>
             <p>Ya completaste el paso 2. Ahora seguí con tu buyer persona para definir con precisión a quién le hablás.</p>
             <div class="flow-modal-actions">
-                <button class="btn btn-info" type="button" id="vision-flow-next">Ir al paso 3: Buyer Persona</button>
-                <button class="btn btn-cancelar" type="button" id="vision-flow-close">Quedarme acá</button>
+                <button class="btn btn-info im-boton--principal im-boton" type="button" id="vision-flow-next">Ir al paso 3: Buyer Persona</button>
+                <button class="btn btn-cancelar im-boton--tonal im-boton" type="button" id="vision-flow-close">Quedarme acá</button>
             </div>
         </div>
     </div>

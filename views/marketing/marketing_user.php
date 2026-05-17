@@ -10,22 +10,20 @@ $state = (string) ($estadoMarketing['state'] ?? 'none');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsa - Marketing</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
     <link rel="stylesheet" href="marketing_styles.css">
 </head>
 <body>
-<div class="layout">
+<div class="layout im-aplicacion">
     <?php require __DIR__ . '/../../partials/marketing_nav.php'; ?>
-    <main class="main">
-        <header class="navbar">
-            <div class="navbar-left"><button class="btn-icon" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Marketing</div></div>
+    <main class="main im-contenedor">
+        <header class="navbar im-barra-superior">
+            <div class="navbar-left"><button class="btn-icon im-boton-icono" onclick="toggleSidebar()"><span class="material-icons">menu</span></button><div class="navbar-title">Marketing</div></div>
             <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
         </header>
-        <section class="content page-stack">
+        <section class="content page-stack im-contenido">
             <?php if (($flash['message'] ?? '') !== ''): ?><div class="flash <?= mh($flash['type']) ?>"><?= mh($flash['message']) ?></div><?php endif; ?>
-            <div class="marketing-card hero-card">
+            <div class="marketing-card hero-card im-tarjeta">
                 <h1>Marketing</h1>
                 <p class="muted">Hola, <?= $displayName ?>. Desde aca podes solicitar planes y consultar el estado de tu gestion de marketing.</p>
             </div>

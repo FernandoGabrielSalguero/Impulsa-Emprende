@@ -1,4 +1,4 @@
-<section class="marketing-card status-card">
+<section class="marketing-card status-card im-tarjeta">
     <span class="material-icons status-icon">history</span>
     <div>
         <h2>Ultimo plan</h2>

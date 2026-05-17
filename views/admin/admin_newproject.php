@@ -221,10 +221,7 @@ foreach ($solicitudesLandingExternal as $solicitud) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsa - Solicitudes de Proyecto</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/framework/framework.css">
-    <script src="../../assets/framework/framework.js" defer></script>
+    <?php $impulsaMaterialAssetBase = '../..'; require __DIR__ . '/../../partials/impulsa_material_assets.php'; ?>
 
     <style>
         .navbar { justify-content: space-between; }
@@ -423,13 +420,13 @@ foreach ($solicitudesLandingExternal as $solicitud) {
     </style>
 </head>
 <body>
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
+    <div class="layout im-aplicacion">
+        <aside class="sidebar im-menu-lateral" id="sidebar">
             <div class="sidebar-header">
                 <img src="../../assets/institucionales/icons/Isotipo grande.png" alt="Impulsa Emprende" class="sidebar-brand-icon">
                 <span class="logo-text">impulsa emprende</span>
             </div>
-            <nav class="sidebar-menu">
+            <nav class="sidebar-menu im-navegacion">
                 <ul>
                     <li onclick="location.href='admin_dashboard.php'">
                         <span class="material-icons" style="color:#6366f1">home</span>
@@ -459,16 +456,16 @@ foreach ($solicitudesLandingExternal as $solicitud) {
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-icon" onclick="toggleSidebar()">
+                <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                     <span class="material-icons" id="collapseIcon">chevron_left</span>
                 </button>
             </div>
         </aside>
 
-        <div class="main">
-            <header class="navbar">
+        <div class="main im-contenedor">
+            <header class="navbar im-barra-superior">
                 <div class="navbar-left">
-                    <button class="btn-icon" onclick="toggleSidebar()">
+                    <button class="btn-icon im-boton-icono" onclick="toggleSidebar()">
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="navbar-title">Solicitudes de proyecto</div>
@@ -476,22 +473,22 @@ foreach ($solicitudesLandingExternal as $solicitud) {
                 <?= renderBotonPerfil($perfil['avatar_path'] ?? ($_SESSION['avatar_path'] ?? null)) ?>
             </header>
 
-            <section class="content">
-                <div class="card">
+            <section class="content im-contenido">
+                <div class="card im-tarjeta">
                     <div class="hero-card">
                         <h1>Solicitudes recibidas</h1>
                         <p><?= $displayName ?>, aca podes ver las solicitudes enviadas desde el formulario publico de nuevos proyectos.</p>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="section-title">
                         <div>
                             <h2>Solicitudes de proyectos de software</h2>
                             <p>Formularios enviados desde la pagina publica de nuevo proyecto.</p>
                         </div>
                     </div>
-                    <div class="table-wrap">
+                    <div class="table-wrap im-tabla-contenedor">
                         <table class="requests-table">
                             <thead>
                                 <tr>
@@ -522,7 +519,7 @@ foreach ($solicitudesLandingExternal as $solicitud) {
                                             <td><?= htmlspecialchars((string)($solicitud['nombre'] ?? ''), ENT_QUOTES, 'UTF-8') ?></td>
                                             <td><?= htmlspecialchars((string)($solicitud['nombre_proyecto'] ?? ''), ENT_QUOTES, 'UTF-8') ?></td>
                                             <td>
-                                                <span class="badge <?= $estadoClass ?>">
+                                                <span class="badge <?= $estadoClass ?> im-chip">
                                                     <?= htmlspecialchars(ucfirst($estado), ENT_QUOTES, 'UTF-8') ?>
                                                 </span>
                                             </td>
@@ -553,14 +550,14 @@ foreach ($solicitudesLandingExternal as $solicitud) {
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card im-tarjeta">
                     <div class="section-title">
                         <div>
                             <h2>Solicitudes de landing pages</h2>
                             <p>Formularios enviados desde la nueva pagina publica para landing pages.</p>
                         </div>
                     </div>
-                    <div class="table-wrap">
+                    <div class="table-wrap im-tabla-contenedor">
                         <table class="requests-table">
                             <thead>
                                 <tr>
@@ -591,7 +588,7 @@ foreach ($solicitudesLandingExternal as $solicitud) {
                                             <td><?= htmlspecialchars((string)($solicitud['nombre'] ?? ''), ENT_QUOTES, 'UTF-8') ?></td>
                                             <td><?= htmlspecialchars((string)($solicitud['nombre_proyecto'] ?? ''), ENT_QUOTES, 'UTF-8') ?></td>
                                             <td>
-                                                <span class="badge <?= $estadoClass ?>">
+                                                <span class="badge <?= $estadoClass ?> im-chip">
                                                     <?= htmlspecialchars(ucfirst($estado), ENT_QUOTES, 'UTF-8') ?>
                                                 </span>
                                             </td>
